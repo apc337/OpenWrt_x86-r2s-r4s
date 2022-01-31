@@ -56,8 +56,8 @@ test $version -lt 1 && {
 		uci -q set system.@system[0].zonename='Asia/Shanghai'
 		uci -q set system.@system[0].timezone='CST-8'
 		uci -q del system.ntp.server
+		uci -q add_list system.ntp.server='120.25.108.11'
 		uci -q add_list system.ntp.server='ntp.aliyun.com'
-		uci -q add_list system.ntp.server='0.openwrt.pool.ntp.org'
 		uci commit system
 	}
 
@@ -124,7 +124,7 @@ test $version -lt 1 && {
 	uci -q set fstab.@global[0].anon_mount=1
 	uci commit fstab
  
-	uci -q set network.lan.ipaddr="10.0.0.1"
+	uci -q set network.lan.ipaddr="10.0.3.254"
 	uci -q set network.@globals[0].packet_steering=1
 	uci commit network
   
